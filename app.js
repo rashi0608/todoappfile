@@ -10,7 +10,7 @@ app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
-mongoose.connect("mongodb+srv://admin-rashi:Test1234@cluster0.ckjon.mongodb.net/todoListDB",{useUnifiedTopology:true});
+mongoose.connect("mongodb+srv://admin-rashi:Test1234@cluster0.ckjon.mongodb.net/todoListDB",{useUnifiedTopology:true, useNewUrlParser: true});
 const itemsSchema={
   name:String
 };
@@ -119,7 +119,6 @@ app.get("/about", function(req, res){
 //   port=5000;
 // }
 // app.listen(3000);
+const PORT = process.env.PORT || 3000;
 
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
-});
+app.listen(PORT, () => console.log(`server run at port ${PORT}`));
